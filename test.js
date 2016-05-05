@@ -5,89 +5,13 @@ var http = require('http');
 var fs = require('fs');
 var zlib = require('zlib');
 var cheerio = require('cheerio');
+var url = require('url');
+var pixivOption = require('./pixivOption.js');
 
-var indexImageOptions = {
-    hostname: 'i3.pixiv.net',
-    path: '/img03/profile/kotocc/8007234.jpg',
-    method: 'GET',
-    headers: {
-        'Accept': 'image/webp,image/*,*/*;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, sdch',
-        'Accept-Language': 'zh-CN,zh;q=0.8',
-        'Cache-Control': 'max-age=0',
-        'Connection': 'keep-alive',
-        'Cookie': 'p_ab_id=6; device_token=16bfb2fa262d6a8a529918865677d188; ' +
-        'PHPSESSID=8318723_06a7561cbe9fcc2ee5799e4960f71476; ' +
-        /*
-         '__utmt=1; __utma=235335808.1494775107.1459338049.1462429185.1462433443.6; ' +
-         '__utmb=235335808.1.10.1462433443; __utmc=235335808; ' +
-         '__utmz=235335808.1462433443.6.4.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; ' +
-         '__utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=male=1^6=user_id=8318723=1; ' +
-         '_ga=GA1.2.1494775107.1459338049; ' +
-         '_gat_UA-77039608-4=1; ' +
-         */
-        'module_orders_mypage=%5B%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D',
-
-        'Host': 'i3.pixiv.net',
-        'Referer': 'http://www.pixiv.net/',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-    }
-};
-
-var indexOptions = {
-    hostname: 'www.pixiv.net',
-    path: '/',
-    method: 'GET',
-    headers: {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, sdch',
-        'Accept-Language': 'zh-CN,zh;q=0.8',
-        'Cache-Control': 'max-age=0',
-        'Connection': 'keep-alive',
-        'Cookie': 'p_ab_id=6; login_ever=yes; device_token=16bfb2fa262d6a8a529918865677d188; a_type=0; ' +
-        'PHPSESSID=8318723_06a7561cbe9fcc2ee5799e4960f71476; ' +
-        /*
-         '__utmt=1; __utma=235335808.1494775107.1459338049.1462429185.1462433443.6; ' +
-         '__utmb=235335808.1.10.1462433443; __utmc=235335808; ' +
-         '__utmz=235335808.1462433443.6.4.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; ' +
-         '__utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=male=1^6=user_id=8318723=1; ' +
-         '_ga=GA1.2.1494775107.1459338049; ' +
-         '_gat_UA-77039608-4=1; ' +
-         */
-        'module_orders_mypage=%5B%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D',
-
-        'Host': 'www.pixiv.net',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-    }
-};
-var indexDownloadOptions = {
-    hostname: 'www.pixiv.net',
-    path: '/member_illust.php?mode=medium&illust_id=56726446',
-    method: 'GET',
-    headers: {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, sdch',
-        'Accept-Language': 'zh-CN,zh;q=0.8',
-        'Cache-Control': 'max-age=0',
-        'Connection': 'keep-alive',
-        'Cookie': 'p_ab_id=6; login_ever=yes; device_token=16bfb2fa262d6a8a529918865677d188; a_type=0; ' +
-        'PHPSESSID=8318723_06a7561cbe9fcc2ee5799e4960f71476; ' +
-        /*
-         '__utmt=1; __utma=235335808.1494775107.1459338049.1462429185.1462433443.6; ' +
-         '__utmb=235335808.1.10.1462433443; __utmc=235335808; ' +
-         '__utmz=235335808.1462433443.6.4.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; ' +
-         '__utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=male=1^6=user_id=8318723=1; ' +
-         '_ga=GA1.2.1494775107.1459338049; ' +
-         '_gat_UA-77039608-4=1; ' +
-         */
-        'module_orders_mypage=%5B%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D',
-        'Host': 'www.pixiv.net',
-        'Referer':'http://www.pixiv.net/',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-    }
-};
-
-var req = http.request(indexDownloadOptions, function (res) {
+var chieUrl = 'http://www.pixiv.net/member_illust.php?mode=medium&illust_id=56671889';
+var urlp = url.parse(chieUrl)
+//console.log(urlp.host)
+var req = http.request(new pixivOption(urlp.hostname, urlp.path, 'GET', 'http://www.pixiv.net/'), function (res) {
     console.log('STATUS: ' + res.statusCode);
     console.log('HEADERS: ' + JSON.stringify(res.headers));
     var imgData = '';
@@ -104,44 +28,63 @@ var req = http.request(indexDownloadOptions, function (res) {
         //Content-Encoding为gzip,也可采用管道方式，http://www.jb51.net/article/61721.htm
         if (res.headers['content-encoding'] === 'gzip') {
             zlib.gunzip(data, function (err, decoded) {
-                $=cheerio.load(decoded.toString());
-                console.log($('.works_display img')[0].attribs.src)
-                data = decoded.toString();
-                //console.log(data);
-                //callback( err, args, res.headers, data);
+                $ = cheerio.load(decoded.toString());
+                console.log($('#wrapper .title')[0].children[0].data)
+                if ($('.works_display img')[0] !== undefined) {
+                    //i2.pixiv.net /c/600x600/img-master/img/2016/05/05/23/41/22/56732041_p0_master1200.jpg
+                    //http://i2.pixiv.net/img-original/img/2016/05/05/23/41/22/56732041_p0.jpg
+                    var imageUrl = url.parse(($('.works_display img')[0].attribs.src))
+                    console.log(imageUrl.hostname + ' ' + imageUrl.path);
+                    var originalPath = imageUrl.path.replace(/^.*\/img-master/, '/img-original').replace(/_master1200/, '');
+                    var imageReq = http.request(new pixivOption(imageUrl.hostname, originalPath, 'GET', chieUrl), function (res) {
+                        res.setEncoding("base64");
+                        res.on('end', function () {
+                            console.log('写完');
+                        })
+                    });
+                    imageReq.on('response', function (response) {
+                        var output = fs.createWriteStream('./resources/hehe.png', {encoding: 'base64'});
+                        response.pipe(output);
+                    });
+                    imageReq.on('error', function (e) {
+                        console.log('problem with request: ' + e.message);
+                    });
+                    imageReq.end();
+                }
             });
         }
     });
 });
+
 /*
-var req = http.request(indexImageOptions, function (res) {
-    console.log('STATUS: ' + res.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(res.headers));
-    var imgData = '';
-    res.setEncoding("base64");
+ var req = http.request(indexImageOptions, function (res) {
+ console.log('STATUS: ' + res.statusCode);
+ console.log('HEADERS: ' + JSON.stringify(res.headers));
+ var imgData = '';
+ res.setEncoding("base64");
 
-    //200后写入，不推荐
-    res.on('data', function (chunk) {
-        imgData += chunk;
-    });
-    res.on('end', function () {
-        fs.writeFile("./resources/logonew.png", imgData, "base64", function (err) {
-            if (err) {
-                console.log("down fail");
-            }
-            console.log("down success");
-        });
-    });
+ //200后写入，不推荐
+ res.on('data', function (chunk) {
+ imgData += chunk;
+ });
+ res.on('end', function () {
+ fs.writeFile("./resources/logonew.png", imgData, "base64", function (err) {
+ if (err) {
+ console.log("down fail");
+ }
+ console.log("down success");
+ });
+ });
 
-    res.on('end', function () {
-        console.log('sdlfkj');
-    });
-});
+ res.on('end', function () {
+ console.log('sdlfkj');
+ });
+ });
 
-req.on('response',function(response){
-    var output=fs.createWriteStream('./resources/logo1.png',{encoding:'base64'});
-    response.pipe(output);
-});*/
+ req.on('response',function(response){
+ var output=fs.createWriteStream('./resources/logo1.png',{encoding:'base64'});
+ response.pipe(output);
+ });*/
 
 req.on('error', function (e) {
     console.log('problem with request: ' + e.message);

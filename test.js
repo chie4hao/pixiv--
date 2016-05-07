@@ -9,8 +9,10 @@ const url = require('url');
 const pixiv = require('./chiePixiv')
 
 
-pixiv.illustIdToOriginal('54173207', function (a) {
+/*pixiv.illustIdToOriginal('55228474', function (a) {
+ console.log(a);
+ });*/
+
+pixiv.search('古明地 1000users入り', 13, function (a) {
     console.log(a);
 });
-
-//pixiv.search('古明地 1000users入り',2);

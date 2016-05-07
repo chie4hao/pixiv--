@@ -2,19 +2,19 @@
  * Created by chie on 2016/5/6.
  */
 
-const cheerio = require('cheerio');
 const http = require('http');
 const zlib = require('zlib');
 const fs = require('fs');
 
 const ChieRequest = function () {
+    
 };
 
 ChieRequest.prototype.init = function (callback) {
     let that = this;
     this.req = http.request(this.options, function (res) {
-        console.log('STATUS: ' + res.statusCode);
-        console.log('HEADERS: ' + JSON.stringify(res.headers));
+        //console.log('STATUS: ' + res.statusCode);
+        //console.log('HEADERS: ' + JSON.stringify(res.headers));
         that.res = res;
         that.receive(that);
     }).on('error', function (e) {
@@ -67,7 +67,7 @@ HtmlGet.prototype.receive = function (that) {
 HtmlGet.prototype.send = function () {
     var that=this;
     this.req.on('error', function (e) {
-        that.callback('problem with request: ' + e.message);
+        that.callback('problem with request1: ' + e.message);
     });
     this.req.end();
 };
@@ -114,7 +114,7 @@ const request = function (method, options, parameters, callback) {
             b.request();
             break;
         default:
-            throw new Error('不对');
+            throw new Error('method不对');
     }
 }
 

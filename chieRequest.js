@@ -2,9 +2,6 @@
  * Created by chie on 2016/5/6.
  */
 
-//最大并行原画请求数量和Html请求数量,网速好可以适当调高一点,太高可能会被封IP？
-const OriginalGetCount = 8;
-const HtmlGetCount = 3;
 
 const ChieRequest = function () {
 
@@ -67,7 +64,7 @@ HtmlGet.prototype.send = function () {
     this.req.on('error', function (e) {
         that.callback('problem with request html: ' + e.message);
     });
-    this.req.setTimeout(60000, function (a) {
+    this.req.setTimeout(config.htmlGetTimeout, function (a) {
         console.log('htmlGet超时')
         that.status = 'timeOut';
         that.req.abort();
@@ -102,7 +99,7 @@ OriginalOneGet.prototype.send = function () {
     let parameters = this.parameters;
     let that = this;
     this.req.on('response', function (response) {
-        let output = fs.createWriteStream('./resources/' + parameters.name.replace(/\\|\/|\?/g, ''), {encoding: 'base64'});
+        let output = fs.createWriteStream('./resources/' + parameters.name.replace(/\\|\/|\?|\*|:|"|<|>/g, ''), {encoding: 'base64'});
         response.pipe(output);
     });
     this.req.on('error', function (e) {
@@ -112,7 +109,7 @@ OriginalOneGet.prototype.send = function () {
         }
     });
 
-    this.req.setTimeout(60000, function (a) {
+    this.req.setTimeout(config.originalOneGetTimeOut, function (a) {
         that.status = 'timeOut';
         that.req.abort();
     });
@@ -121,11 +118,11 @@ OriginalOneGet.prototype.send = function () {
 
 const originalQueue = async.queue(function (task, callback) {
     task(callback);
-}, OriginalGetCount);
+}, config.OriginalGetCount);
 
 const htmlGetQueue = async.queue(function (task, callback) {
     task(callback)
-}, HtmlGetCount);
+}, config.HtmlGetCount);
 
 const request = function (method, options, parameters, callback) {
     switch (method) {

@@ -1,7 +1,9 @@
 /**
  * Created by chie on 2016/5/5.
  */
+
 function RequestOptions(hostname, path, method, referer) {
+    //根据我自己浏览器伪造的headers,其实很多都用不上的
     let headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/*,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, sdch',
@@ -13,7 +15,7 @@ function RequestOptions(hostname, path, method, referer) {
             'login_ever': 'yes',
             'device_token': '16bfb2fa262d6a8a529918865677d188',
             'a_type': 0,
-            'PHPSESSID': '8318723_06a7561cbe9fcc2ee5799e4960f71476',
+            'PHPSESSID': config.PHPSESSID,
             'module_orders_mypage': '%5B%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D'
         },
         'Host': 'www.pixiv.net',

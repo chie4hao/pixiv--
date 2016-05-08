@@ -86,10 +86,11 @@ let chiePixiv = {
                         let imageUrl = url.parse($('._illust_modal img', wrapper).attr('data-src'));
                         let imageType = imageUrl.path.match(/\.\w*$/)[0];
                         let name = $('.title', wrapper)[0].children[0].data;
-                        if (!fs.existsSync('./resources/' + (illustId + '_' + name + imageType).replace(/\\|\/|\?/g, ''))) {
+                        if (!fs.existsSync('./resources/' + (illustId + '_' + name + imageType).replace(/\\|\/|\?|\*|:|"|<|>/g, ''))) {
                             chieRequest('originalOne', new pixivOption(imageUrl.hostname, imageUrl.path, 'GET', mediumUrl), {name: illustId + '_' + name + imageType}, function (a) {
                                 if (a.indexOf('重传') !== -1) {
-                                    fs.unlinkSync('./resources/' + (illustId + '_' + name + imageType).replace(/\\|\/|\?/g, ''));
+                                    if (fs.existsSync('./resources/' + (illustId + '_' + name + imageType).replace(/\\|\/|\?|\*|:|"|<|>/g, '')))
+                                        fs.unlinkSync('./resources/' + (illustId + '_' + name + imageType).replace(/\\|\/|\?|\*|:|"|<|>/g, ''));
                                     console.log(illustId + a + ' ...重传中');
                                     chiePixiv.illustIdToOriginal(illustId, function (asdf) {
                                         callback(asdf)

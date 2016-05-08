@@ -3,6 +3,8 @@
  */
 
 const chiePixiv = require('./chiePixiv');
+const chieRequest = require('./chieRequest.js');
+const pixivOption = require('./pixivOption.js');
 
 let pixivAPI = {
 
@@ -19,7 +21,7 @@ let pixivAPI = {
     },
     //下载某id作者一页中所有图片
     authorIdIllust: function (id, page, callback) {
-        let idUrl = 'http://www.pixiv.net/member_illust.php?type=illust&id=' + id + '&p=' + page;
+        let idUrl = 'http://www.pixiv.net/member_illust.php?id=' + id + '&type=all&p=' + page;
         let idUrlParser = url.parse(idUrl);
         chieRequest('html', new pixivOption(idUrlParser.hostname, idUrlParser.path, 'GET', 'http://www.pixiv.net/'), {}, function (decoded) {
             let imageWork = $('#wrapper ._image-items .image-item .work', decoded.toString());
@@ -45,7 +47,35 @@ let pixivAPI = {
                         let pageItem = parseInt(a.children[0].data)
                         if (pageItem > maxPage) maxPage = pageItem;
                     });
-                    chiePixiv.searchPageCount(searchStr, callback, maxPage);
+                    pixivAPI.searchPageCount(searchStr, callback, maxPage);
+                } else {
+                    callback(page);
+                }
+            } else if ($('#wrapper .column-search-result .image-item', decoded.toString()).length !== 0) {
+                callback(1);
+            } else {
+                callback(0)
+            }
+        });
+    },
+    //和上一个差不多，暂时放着
+    authorIdPageCount: function (id, callback, page) {
+        page = page || 1;
+        let searchUrl = 'http://www.pixiv.net/member_illust.php?id=' + id + '&type=all&p=' + page;
+        let searchUrlParser = url.parse(searchUrl);
+        chieRequest('html', new pixivOption(searchUrlParser.hostname, searchUrlParser.path, 'GET', 'http://www.pixiv.net/'), {}, function (decoded) {
+            let current = $('#wrapper .column-order-menu .pager-container ul .current', decoded.toString());
+            //  ul
+            if (current.length !== 0) {
+                let pager = $('#wrapper .column-order-menu .pager-container', decoded.toString());
+                if ($('.next a', pager).length !== 0) {
+                    let pageList = $('ul li a', pager);
+                    let maxPage = 0;
+                    Array.prototype.forEach.call(pageList, function (a) {
+                        let pageItem = parseInt(a.children[0].data)
+                        if (pageItem > maxPage) maxPage = pageItem;
+                    });
+                    pixivAPI.authorIdPageCount(id, callback, maxPage);
                 } else {
                     callback(page);
                 }
@@ -59,13 +89,28 @@ let pixivAPI = {
     //下载所有搜索结果！！！
     searchAllIllust(searchStr, callback){
         let currentCount = 0;
-        chiePixiv.searchPageCount(searchStr, function (pageCount) {
+        pixivAPI.searchPageCount(searchStr, function (pageCount) {
             console.log(pageCount);
             for (let i = 1; i <= pageCount; i++) {
-                chiePixiv.searchIllust(searchStr, i, function (a) {
+                pixivAPI.searchIllust(searchStr, i, function (a) {
                     console.log(a);
                     if (++currentCount >= pageCount) {
-                        callback('全部下载完毕');
+                        callback(searchStr+'全部下载完毕');
+                    }
+                });
+            }
+        });
+    },
+    //下载author所有图片
+    authorIdAllIllust(id, callback){
+        let currentCount = 0;
+        pixivAPI.authorIdPageCount(id, function (pageCount) {
+            console.log(pageCount);
+            for (let i = 1; i <= pageCount; i++) {
+                pixivAPI.authorIdIllust(id, i, function (a) {
+                    console.log(a);
+                    if (++currentCount >= pageCount) {
+                        callback('authorId:'+id+'全部下载完毕');
                     }
                 });
             }
@@ -77,6 +122,7 @@ let pixivAPI = {
         })
     }
 }
+
 let illustIdWordArraySearch = function (imageWork, callback) {
     if (imageWork.length !== 0) {
         let imageIdArray = [];

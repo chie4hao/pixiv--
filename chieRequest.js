@@ -2,12 +2,7 @@
  * Created by chie on 2016/5/6.
  */
 
-const http = require('http');
-const zlib = require('zlib');
-const fs = require('fs');
-const async = require('async');
-
-//最大并行请求数量
+//最大并行原画请求数量和Html请求数量,网速好可以适当调高一点,太高可能会被封IP？
 const OriginalGetCount = 8;
 const HtmlGetCount = 3;
 
@@ -68,7 +63,7 @@ HtmlGet.prototype.receive = function (that) {
 }
 
 HtmlGet.prototype.send = function () {
-    var that = this;
+    let that = this;
     this.req.on('error', function (e) {
         that.callback('problem with request html: ' + e.message);
     });

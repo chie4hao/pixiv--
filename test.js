@@ -2,7 +2,7 @@
  * Created by chie on 2016/5/5.
  */
 
-require('./global');
+require('./src/global');
 
 global.config = {
     //此项为必需，请根据自己浏览器Cookie中的PHPSESSID更改
@@ -23,7 +23,7 @@ global.config = {
     R18: false
 };
 
-const pixiv = require('./pixivAPI');
+const pixiv = require('./src/pixivAPI');
 
 //根据illustId下载原图
 /*

@@ -116,10 +116,14 @@ let pixivAPI = {
             }
         });
     },
-    illustIdToOriginal: function (illustId, callback) {
-        chiePixiv.illustIdToOriginal(illustId, function (a) {
-            callback(a);
-        })
+    illustIdToOriginal: function (illustId,callback) {
+        chiePixiv.illustIdToOriginal(illustId).then(function(a){
+            callback(a)
+        },function(b){
+            callback(b)
+        }).catch(function (err) {
+            callback('CHIEERROR:'+err);
+        });
     }
 }
 

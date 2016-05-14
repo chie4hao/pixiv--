@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8a8e46c-e560-4b4a-a175-10dc56e1d671" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/chiePixiv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/chieRequest.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/global.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pixivAPI.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pixivOption.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/chiePixiv.js" afterPath="$PROJECT_DIR$/src/chiePixiv.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/chieRequest.js" afterPath="$PROJECT_DIR$/src/chieRequest.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/global.js" afterPath="$PROJECT_DIR$/src/global.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pixivAPI.js" afterPath="$PROJECT_DIR$/src/pixivAPI.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pixivOption.js" afterPath="$PROJECT_DIR$/src/pixivOption.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/chiePromiseRequest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chiePixiv.js" afterPath="$PROJECT_DIR$/src/chiePixiv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pixivAPI.js" afterPath="$PROJECT_DIR$/src/pixivAPI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.js" afterPath="$PROJECT_DIR$/test.js" />
     </list>
     <ignored path="pixiv--.iws" />
@@ -36,8 +30,8 @@
       <file leaf-file-name="test.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="114">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
               <folding>
                 <element signature="e#0#39#0" expanded="false" />
               </folding>
@@ -45,14 +39,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pixivAPI.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pixivAPI.js">
+      <file leaf-file-name="chiePromiseRequest.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chiePromiseRequest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1805">
-              <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#39#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1064">
+              <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,18 +52,18 @@
       <file leaf-file-name="chiePixiv.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chiePixiv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1881">
-              <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+            <state relative-caret-position="2109">
+              <caret line="111" column="29" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chieRequest.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
+      <file leaf-file-name="pixivAPI.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pixivAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1919">
-              <caret line="101" column="107" selection-start-line="101" selection-start-column="107" selection-end-line="101" selection-end-column="107" />
+            <state relative-caret-position="469">
+              <caret line="119" column="64" selection-start-line="119" selection-start-column="64" selection-end-line="119" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -81,21 +73,9 @@
         <entry file="file://$PROJECT_DIR$/src/global.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pixivOption.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pixivOption.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-              <folding>
-                <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,10 +100,14 @@
         <option value="$PROJECT_DIR$/pixiv.js" />
         <option value="$PROJECT_DIR$/chieRequest.js" />
         <option value="$PROJECT_DIR$/chiePixiv.js" />
-        <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/pixivOption.js" />
         <option value="$PROJECT_DIR$/global.js" />
         <option value="$PROJECT_DIR$/pixivAPI.js" />
+        <option value="$PROJECT_DIR$/src/pixivAPI.js" />
+        <option value="$PROJECT_DIR$/src/chieRequest.js" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/src/chiePixiv.js" />
+        <option value="$PROJECT_DIR$/src/chiePromiseRequest.js" />
       </list>
     </option>
   </component>
@@ -170,6 +154,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -204,13 +189,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FaceDetect" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="nodejs_interpreter_path" value="C:\Program Files\nodejs\node" />
@@ -319,27 +303,38 @@
       <workItem from="1462590414885" duration="9063000" />
       <workItem from="1462606215638" duration="22535000" />
       <workItem from="1462632473505" duration="3694000" />
-      <workItem from="1462684120426" duration="42872000" />
+      <workItem from="1462684120426" duration="46271000" />
+      <workItem from="1462954913235" duration="979000" />
+      <workItem from="1462984958364" duration="753000" />
+      <workItem from="1463032386825" duration="746000" />
+      <workItem from="1463072296364" duration="3653000" />
+      <workItem from="1463127738640" duration="4743000" />
+      <workItem from="1463136967514" duration="5528000" />
+      <workItem from="1463146007355" duration="3214000" />
+      <workItem from="1463152065259" duration="1193000" />
+      <workItem from="1463156068376" duration="12522000" />
+      <workItem from="1463200098937" duration="1018000" />
+      <workItem from="1463207076002" duration="13102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136226000" />
+    <option name="totallyTimeSpent" value="187076000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2306003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24251969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21417323" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20424597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -372,6 +367,110 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="124" column="24" selection-start-line="124" selection-start-column="24" selection-end-line="124" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chiePixiv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="124" column="24" selection-start-line="124" selection-start-column="24" selection-end-line="124" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pixivAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1805">
+          <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chiePixiv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1919">
+          <caret line="101" column="107" selection-start-line="101" selection-start-column="107" selection-end-line="101" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pixivOption.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -402,9 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -438,9 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,9 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -510,9 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -546,9 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -574,9 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,9 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
           <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,61 +720,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13383">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pixiv.js" />
-    <entry file="file://$PROJECT_DIR$/src/pixivAPI.js">
+    <entry file="file://$PROJECT_DIR$/src/pixivOption.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1805">
-          <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chiePixiv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1881">
-          <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1919">
-          <caret line="101" column="107" selection-start-line="101" selection-start-column="107" selection-end-line="101" selection-end-column="107" />
-          <folding />
+        <state relative-caret-position="57">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/global.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pixivOption.js">
+    <entry file="file://$PROJECT_DIR$/src/pixivAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc;n#RequestOptions#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="469">
+          <caret line="119" column="64" selection-start-line="119" selection-start-column="64" selection-end-line="119" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chieRequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chiePromiseRequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chiePixiv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2109">
+          <caret line="111" column="29" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="114">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>

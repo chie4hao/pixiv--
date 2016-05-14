@@ -10,7 +10,6 @@ const originalQueue = async.queue(function (task, callback) {
     task(callback)
 }, config.OriginalGetCount);
 
-//用promise的重构
 const request = function (method, options, parameters, uploadcount) {
     uploadcount = uploadcount || 0;
     switch (method) {
@@ -22,16 +21,17 @@ const request = function (method, options, parameters, uploadcount) {
                         resolve(a)
                     }, function (a) {
                         cb();
-                        if (a === 'htmlGet超时') {
-                            if (uploadcount < config.htmlGetMaxCount) {
-                                console.log(2);
+                        if (a === 'htmlGet超时'||a.indexOf('problem with request htmlGet')!==-1) {
+                            if (uploadcount < config.htmlGetRetransmissionCount) {
+                                console.log('htmlGet超时');
+                                //重传,重传次数为uploadcount
                                 request(method, options, parameters, ++uploadcount).then(function (a) {
                                     resolve(a)
                                 }, function (a) {
-                                    reject(b)
+                                    reject(a)
                                 })
                             } else {
-                                reject('htmlGet重传失败');
+                                reject(config.htmlGetRetransmissionCount+'次htmlGet重传失败,很有可能是网络问题');
                             }
                         } else {
                             reject(a);
@@ -51,8 +51,8 @@ const request = function (method, options, parameters, uploadcount) {
                     }, function (a) {
                         cb();
                         if (a.indexOf('重传') !== -1) {
-                            if (uploadcount < config.originalOneGetMaxCount) {
-                                console.log(1);
+                            if (uploadcount < config.originalOneRetransmissionCount) {
+                                console.log('originalGet重传');
                                 request(method, options, parameters, ++uploadcount).then(function (a) {
                                     resolve(a)
                                 }, function (b) {
@@ -60,7 +60,8 @@ const request = function (method, options, parameters, uploadcount) {
                                 })
                             }
                             else {
-                                reject('originalOne重传失败');
+                                //返回结果数组,不reject
+                                resolve(config.originalOneRetransmissionCount+'次originalOne重传失败,很有可能是网络问题');
                             }
                         } else {                        //其他未知错误
                             reject(a)

@@ -21,7 +21,7 @@ const request = function (method, options, parameters, uploadcount) {
                         resolve(a)
                     }, function (a) {
                         cb();
-                        if (a === 'htmlGet超时'||a.indexOf('problem with request htmlGet')!==-1) {
+                        if (a === 'htmlGet超时' || a.indexOf('problem with request htmlGet') !== -1) {
                             if (uploadcount < config.htmlGetRetransmissionCount) {
                                 console.log('htmlGet超时');
                                 //重传,重传次数为uploadcount
@@ -31,14 +31,14 @@ const request = function (method, options, parameters, uploadcount) {
                                     reject(a)
                                 })
                             } else {
-                                reject(config.htmlGetRetransmissionCount+'次htmlGet重传失败,很有可能是网络问题');
+                                reject(config.htmlGetRetransmissionCount + '次htmlGet重传失败,网络问题');
                             }
                         } else {
                             reject(a);
                         }
-                    })
+                    });
                 }, function () {
-
+                    //判断执行完毕的回调
                 })
             })
             break;
@@ -61,14 +61,14 @@ const request = function (method, options, parameters, uploadcount) {
                             }
                             else {
                                 //返回结果数组,不reject
-                                resolve(config.originalOneRetransmissionCount+'次originalOne重传失败,很有可能是网络问题');
+                                resolve(config.originalOneRetransmissionCount+'次originalOne重传失败,网络问题');
                             }
                         } else {                        //其他未知错误
                             reject(a)
                         }
                     });
                 }, function () {
-
+                    //判断执行完毕的回调
                 })
             })
     }
@@ -108,10 +108,12 @@ let htmlGetPromise = function (options) {
             let size = 0;
             let chunks = [];
             //res.setEncoding("utf8");
+            
             res.on('data', function (chunk) {
                 size += chunk.length;
                 chunks.push(chunk);
             });
+            
             res.on('end', function () {
                 let data = Buffer.concat(chunks, size);
                 //Content-Encoding为gzip
@@ -129,10 +131,12 @@ let htmlGetPromise = function (options) {
         req.on('error', function (e) {
             reject('problem with request htmlGet: ' + e.message);
         });
+        
         req.setTimeout(config.htmlGetTimeout, function (a) {
             req.abort();
             reject('htmlGet超时')
         });
+        
         req.end();
     })
 }

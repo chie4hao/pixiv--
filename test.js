@@ -5,8 +5,8 @@
 require('./src/global');
 
 global.config = {
-    //此项为必需，请根据自己浏览器Cookie中的PHPSESSID更改
-    PHPSESSID: '******************************',
+    //此项为必需,请根据自己浏览器Cookie中的PHPSESSID更改,不更改或者不正确的PHPSESSID程序无法工作
+    PHPSESSID: '***************************************',
 
     //是否下载多图的illustId,默认true基本不需要改
     mangaModel: true,
@@ -23,18 +23,17 @@ global.config = {
 
     //请求超时时间(ms)
     htmlGetTimeout: 60000,
-    originalOneGetTimeOut: 20000,
+    originalOneGetTimeOut: 30000,
 
     //最大重传次数(超时或者网络错误时重传)
     htmlGetRetransmissionCount: 3,
-    originalOneRetransmissionCount: 3,
+    originalOneRetransmissionCount: 4,
 
     //是否只下载R18？！！
-    R18: true
+    R18: false
 };
 
 const pixiv = require('./src/pixivAPI');
-const chiePixiv = require('./src/chiePixiv');
 
 //根据illustId下载原图
 /*
@@ -70,14 +69,15 @@ const chiePixiv = require('./src/chiePixiv');
 
 //下载搜索结果的全部图片
 /*
- pixiv.downloadAllIllust('東方Project10000users入り').then(function(a){
+ pixiv.downloadAllIllust('東方Project5000users入り').then(function(a){
  console.log(a)
  })
- */
+*/
 
 //下载某作者的全部图片
 /*
-pixiv.downloadAllIllust(37062).then(function (a) {
+pixiv.downloadAllIllust(3104565).then(function (a) {
     console.log(a)
 })
 */
+

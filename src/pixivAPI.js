@@ -27,7 +27,7 @@ let pixivAPI = {
     },
 
     //下载某id作者一页中所有图片
-    authorIdIllust: function (id, page, callback) {
+    authorIdIllust: function (id, page) {
         return new Promise(function (resolve, reject) {
             let idUrl = 'http://www.pixiv.net/member_illust.php?id=' + id + '&type=all&p=' + page;
             let idUrlParser = url.parse(idUrl);

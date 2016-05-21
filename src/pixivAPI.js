@@ -180,7 +180,7 @@ let pixivAPI = {
             })
         })
     },
-
+    //一个封装
     illustIdToOriginal: function (illustId) {
         return new Promise(function (resolve, reject) {
             chiePixiv.illustIdToOriginal(illustId).then(function (a) {
